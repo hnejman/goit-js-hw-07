@@ -34,7 +34,6 @@
 }
 
 .gallery__link {
-  pointer-events:var(--animation-duration);
   display: block;
   text-decoration: none;
   height: 100%;
