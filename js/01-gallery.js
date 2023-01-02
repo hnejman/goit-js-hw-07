@@ -9,7 +9,7 @@ for(let i = 0; i < 9; i++){
     output.insertAdjacentElement("beforeend", item);
 
     const a = document.createElement("a");
-    a.classList.add("gallery__image");
+    a.classList.add("gallery__link");
     a.href = galleryItems[i].original;
     a.classList.add("min");
     output.lastChild.insertAdjacentElement("afterbegin", a);
@@ -22,26 +22,18 @@ for(let i = 0; i < 9; i++){
     output.lastChild.firstChild.insertAdjacentElement("afterbegin", image);
 };
 
-output.addEventListener("click", e =>{
+output.addEventListener("click", e=>{
+    if(e.target.classList.contains("gallery__image")||e.target.classList.contains("gallery__link")){
     const instance = basicLightbox.create(`
-    <img src="" alt="" loading="lazy" width="800" height="600">
-`)
-instance.show()
-
+    <img src="" alt="" width="800" height="600">
+    `)
+    instance.show()
+    console.log("reading");
     const selector = document.querySelector(".basicLightbox__placeholder");
     console.log(selector);
     selector.lastChild.src = e.target.dataset.source;
     selector.lastChild.alt = e.target.alt
-
-    selector.addEventListener("keydown", (event) => {
-        if (event.isComposing || event.keyCode === 27) {
-            instance.close();
-            console.log("closing");
-        }
-        
-      });
-}, false);
-
-
+    }
+});
 
 console.log(galleryItems);
