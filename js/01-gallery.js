@@ -11,6 +11,7 @@ for(let i = 0; i < 9; i++){
     const a = document.createElement("a");
     a.classList.add("gallery__link");
     a.href = galleryItems[i].original;
+    a.dispatchEvent;
     a.classList.add("min");
     output.lastChild.insertAdjacentElement("afterbegin", a);
 
@@ -23,6 +24,7 @@ for(let i = 0; i < 9; i++){
 };
 
 output.addEventListener("click", e=>{
+    e.stopPropagation;
     if(e.target.classList.contains("gallery__image")||e.target.classList.contains("gallery__link")){
     const instance = basicLightbox.create(`
     <img src="" alt="" width="800" height="600">
