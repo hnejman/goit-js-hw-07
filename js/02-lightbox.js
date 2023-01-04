@@ -17,14 +17,22 @@ for(let i = 0; i < 9; i++){
     output.firstChild.insertAdjacentElement("afterbegin", image);
 };
 
-const lightbox = new SimpleLightbox(".gallery .gallery__link");
+const lightbox = new SimpleLightbox(".gallery .gallery__link", {
+    additionalHtml: "<p class = decription>...</p>"
+});
 
 lightbox.on('shown.simplelightbox', function () {
-	const p = document.createElement("p");
     let number = document.querySelector(".sl-current");
-    p.textContent = galleryItems[number.textContent].description;
-    const spot = document.querySelector(".sl-wrapper");
-    spot.insertAdjacentElement("beforeend", p);
+    let spot = document.querySelector(".decription");
+    spot.textContent = galleryItems[number.textContent].description;
+    spot.classList.add("visible");
+});
+
+lightbox.on('nextDone.simplelightbox', function () {
+    let number = document.querySelector(".sl-current");
+    let spot = document.querySelector(".decription");
+    spot.textContent = galleryItems[number.textContent].description;
+    spot.classList.add("visible");
 });
 
 console.log(galleryItems);

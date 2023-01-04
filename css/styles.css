@@ -42,3 +42,15 @@
 .gallery__link:hover {
   cursor: zoom-in;
 }
+
+.decription{
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 250ms;
+}
+
+.visible{
+  opacity: 1;
+}
